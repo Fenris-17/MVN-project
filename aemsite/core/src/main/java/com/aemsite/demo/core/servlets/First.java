@@ -16,6 +16,7 @@ import java.io.IOException;
         }
 )
 public class First extends SlingSafeMethodsServlet {
+	private static final long serialVersionUID = 2L;
 
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
