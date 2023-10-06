@@ -1,25 +1,28 @@
 package com.aemsite.demo.core.servlets;
+
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
+import org.apache.sling.api.servlets.HttpConstants;
 import org.osgi.service.component.annotations.Component;
+
 import javax.servlet.Servlet;
-import javax.servlet.ServletException;
 import java.io.IOException;
 
-@Component(
-        service = Servlet.class,
-        property = {
-                "sling.servlet.methods=GET",
-                "sling.servlet.resourceTypes=/apps/aemsite/components/firstcompo",
-                "sling.servlet.extensions=html"
-        }
-)
+@Component(service = Servlet.class, property = {
+        "sling.servlet.paths=/bin/simple-servlet",
+        "sling.servlet.methods=" + HttpConstants.METHOD_GET
+})
 public class First extends SlingSafeMethodsServlet {
-	private static final long serialVersionUID = 2L;
 
     @Override
-    protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().write("First Servlet message");
+    protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws IOException {
+        response.setContentType("text/html");
+        response.getWriter().write("<html><body><h1>Simple Servlet</h1></body></html>");
     }
 }
+
+
+
+
+
