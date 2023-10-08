@@ -7,15 +7,19 @@ import javax.inject.Inject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.api.resource.Resource;
-@Model(adaptables = Resource.class,
-resourceType= Contact.RESOURCE_TYPE, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-@Exporter(name="jackson" , extensions="json")
+
+@Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Exporter(name="jackson",selector="test1", extensions="json")
+
+
+
 public class Contact {
-    static final String RESOURCE_TYPE="/apps/aemsite/components/contactinfo";
+    
     @ValueMapValue
     private String contactName;
     @ValueMapValue
     private String contactEmail;
+
     public String getContactName() {
         return contactName;
     }
